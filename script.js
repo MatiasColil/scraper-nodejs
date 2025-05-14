@@ -9,17 +9,32 @@ async function main(cantidadDias) {
   const licitaciones = [];
   for (let i = 0; i < cantidadDias; i++) {
     const fecha = moment().subtract(i, "days").format("DDMMYYYY");
-    const url =
+    const urlPublicadas =
       `https://api.mercadopublico.cl/servicios/v1/publico/licitaciones.json?fecha=${fecha}&estado=publicada&ticket=` +
       process.env.TICKET;
 
-    const temporal = await callAPI(url);
-    licitaciones.push(...temporal);
+    const urlAdjudicadas =
+      `https://api.mercadopublico.cl/servicios/v1/publico/licitaciones.json?fecha=${fecha}&estado=adjudicada&ticket=` +
+      process.env.TICKET;
+
+    const temporalPublicadas = await callAPI(urlPublicadas);
+
+    licitaciones.push(...temporalPublicadas);
+    await sleep(2000);
+
+    const temporalAdjudicadas = await callAPI(urlAdjudicadas);
+    licitaciones.push(...temporalAdjudicadas);
     console.log(
-      "Licitaciones del día: ",
+      "Licitaciones publicadas del día: ",
       moment().subtract(i, "days").format("DD/MM/YYYY"),
       "\nCantidad: ",
-      temporal.length
+      temporalPublicadas.length
+    );
+    console.log(
+      "Licitaciones adjudicadas del día: ",
+      moment().subtract(i, "days").format("DD/MM/YYYY"),
+      "\nCantidad: ",
+      temporalAdjudicadas.length
     );
     await sleep(2000);
   }

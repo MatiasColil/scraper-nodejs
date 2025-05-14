@@ -1,6 +1,7 @@
 class Licitacion {
   constructor(
     nombre, //Nombre de la licitación
+    estado, //Estado de la licitación
     codigo, //Código de la licitación
     entidad, //Entidad que realiza la licitación
     fecha_cierre, // Fecha de cierre
@@ -10,6 +11,7 @@ class Licitacion {
     monto_minimo //Monto mínimo de la licitación en UTM
   ) {
     this.nombre = nombre;
+    this.estado = estado;
     this.codigo = codigo;
     this.entidad = entidad;
     this.fechaCierre = fecha_cierre;

@@ -26,6 +26,7 @@ export async function callAPI(url) {
       const dataById = await licitacionDeatails(item.CodigoExterno);
 
       const licitacionData = dataById?.Listado?.[0];
+      const estado = dataById?.Listado?.[0]?.Estado;
       const nombre = licitacionData?.Nombre ?? "No especifica";
       const codigoExterno = licitacionData?.CodigoExterno ?? "No especifica";
       const nombreOrganismo =
@@ -48,12 +49,13 @@ export async function callAPI(url) {
 
       const licitacion = new Licitacion(
         nombre,
+        estado,
         codigoExterno,
         nombreOrganismo,
         fechaCierre,
         urlPublica,
         tiempoDuracion,
-        "No especifica", // No se puede obtener la cantidad de estacionamientos dado la información de recibidad de la API
+        "No especifica. Ver documentos adjuntos de la licitación.", // No se puede obtener la cantidad de estacionamientos dado la información de recibidad de la API. Ver archivos adjuntos
         monto
       );
 

@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get("/licitaciones", async (req, res) => {
-  const results = await main(req.query?.dias || 0);
+  const results = await main(req.query?.dias || 1);
   return res.status(200).json(results);
 });
 
