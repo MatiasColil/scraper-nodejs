@@ -1,3 +1,8 @@
+/**
+ * Monto mínimo de licitación
+ * @type {Object}
+ * @constant
+ */
 export const montoMinimo = {
   L1: "Pública de 100 UTM",
   LE: "Pública de 100 UTM",
@@ -12,6 +17,11 @@ export const montoMinimo = {
   LS: "Licitación pública de servicios personaes especializados",
 };
 
+/**
+ * Duración del contrato
+ * @type {Object}
+ * @constant
+ */
 export const duracionContrato = {
   0: "No especifica",
   1: "Horas",
