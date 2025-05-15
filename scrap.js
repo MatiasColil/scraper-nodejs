@@ -1,12 +1,24 @@
 import { licitacionDeatails, fetchData } from "./api.js";
 import { montoMinimo, duracionContrato } from "./constants.js";
 import Licitacion from "./licitacionDTO.js";
+import sleep from "./helper.js";
 
-export async function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export async function callAPI(url) {
+/**
+ * Obtiene y procesa licitaciones relacionadas con estacionamientos o parquímetros
+ * desde la API de Mercado Público.
+ *
+ * Esta función realiza lo siguiente:
+ * 1. Consulta la API principal para obtener un listado de licitaciones
+ * 2. Filtra los resultados que contienen palabras clave relacionadas con estacionamientos
+ * 3. Obtiene los detalles completos de cada licitación filtrada
+ * 4. Extrae y formatea la información relevante de cada licitación
+ * 5. Construye objetos Licitacion con los datos procesados
+ *
+ * @param {string} url - URL de la API a la que se desea hacer la llamada
+ * @returns {Promise<Licitacion[]>} - Promesa que se resuelve con un array de objetos Licitacion
+ * @throws {Error} - Si ocurre un error al llamar a la API
+ */
+export default async function callAPI(url) {
   try {
     const data = await fetchData(url);
 
@@ -55,7 +67,7 @@ export async function callAPI(url) {
         fechaCierre,
         urlPublica,
         tiempoDuracion,
-        "No especifica. Ver documentos adjuntos de la licitación.", // No se puede obtener la cantidad de estacionamientos dado la información de recibidad de la API. Ver archivos adjuntos
+        "No especifica. Ver documentos adjuntos de la licitación.", // No se puede obtener la cantidad de estacionamientos dada la información de recibidad de la API. Ver archivos adjuntos
         monto
       );
 
