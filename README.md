@@ -28,7 +28,6 @@ El scraper consulta la API de Mercado Público para un rango específico de día
 ```
 git clone https://github.com/MatiasColil/scraper-nodejs.git
 cd scraper-nodejs
-
 ```
 
 2. Instalar dependencias:
@@ -52,7 +51,6 @@ Esto iniciará un servidor Express en el puerto 3000. Para obtener las licitacio
 
 ```
 http://localhost:3000/licitaciones?dias=7
-
 ```
 
 Donde el parámetro dias especifica la cantidad de días hacia atrás a consultar.
