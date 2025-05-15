@@ -46,7 +46,12 @@ Para pedir un ticket ir a: [Ticket API Mercado Público](https://api.mercadopubl
 
 ## Uso
 
-Ejecutar servidor API
+Ejecutar servidor API.
+
+```
+npm start
+```
+
 Esto iniciará un servidor Express en el puerto 3000. Para obtener las licitaciones, realiza una petición GET a:
 
 ```
