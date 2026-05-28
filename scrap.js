@@ -26,7 +26,8 @@ export default async function callAPI(url) {
       return (
         item.Nombre.toLowerCase().includes("estacionami") ||
         item.Nombre.toLowerCase().includes("parquímetro") ||
-        item.Nombre.toLowerCase().includes("parquimetro")
+        item.Nombre.toLowerCase().includes("parquimetro") ||
+        item.Nombre.toLowerCase().includes("arriendo")
       );
     });
 
